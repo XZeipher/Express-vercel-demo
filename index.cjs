@@ -3,14 +3,16 @@ const { Quiz } = require('anime-quiz');
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(express.json())
+
 app.get('/quiz', (req, res) => {
   const { getRandom } = new Quiz();
   const randomAnime = getRandom();
   res.json({ anime: randomAnime });
 });
 
-app.get('/quizid/:id', (req, res) => {
-  const quizId = req.params.id; 
+app.post('/quizid', (req, res) => {
+  const quizId = req.body.id; 
   const { getQuizById } = new Quiz();
   const animeQuiz = getQuizById(quizId);
   
