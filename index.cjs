@@ -9,8 +9,8 @@ app.get('/quiz', (req, res) => {
   res.json({ anime: randomAnime });
 });
 
-app.get('/quiz', (req, res) => {
-  const quizId = req.query.search; 
+app.get('/quizid/:id', (req, res) => {
+  const quizId = req.params.id; 
   const { getQuizById } = new Quiz();
   const animeQuiz = getQuizById(quizId);
   
