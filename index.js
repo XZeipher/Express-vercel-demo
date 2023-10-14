@@ -9,6 +9,10 @@ app.get('/quiz', (req, res) => {
   res.json({ anime: randomAnime });
 });
 
+app.get('/', (req , res) => {
+  res.json({ message: "ok" });
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
