@@ -1,11 +1,15 @@
-import express from "express";
-
+const express = require('express');
+const { Quiz } = require('anime-quiz');
 const app = express();
-const port = 9000;
-app.use("/", (req, res) => {
-  res.json({ message: "Hello From Express App" });
+const port = process.env.PORT || 3000; // Use the provided port or 3000 as a fallback
+
+app.get('/quiz', (req, res) => {
+  const { getRandom } = new Quiz();
+  const randomAnime = getRandom();
+  res.json({ anime: randomAnime });
 });
 
-app.listen(9000, () => {
-  console.log(`Starting Server on Port ${port}`);
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
+
